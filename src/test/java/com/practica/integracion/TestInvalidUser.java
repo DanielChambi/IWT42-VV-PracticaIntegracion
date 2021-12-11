@@ -19,7 +19,7 @@ import com.practica.integracion.manager.SystemManagerException;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.fail;
 import static org.mockito.Mockito.inOrder;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -120,6 +120,28 @@ public class TestInvalidUser {
 			
 		ordered.verify(mockAuthDao).getAuthData(validUser.getId());
 	    ordered.verify(mockGenericDao).updateSomeData(validUser, remoteId);
+
+		}
+	}
+	
+	@Test
+	void TC43() throws OperationNotSupportedException {
+		String userId = "12345";
+		
+		User validUser = new User(userId,"Ana","Lopez","Madrid", new ArrayList<Object>(Arrays.asList(1, 2)));
+		when(mockAuthDao.getAuthData(validUser.getId())).thenReturn(validUser);
+		
+		String remoteId = "aaa";
+		when(mockGenericDao.deleteSomeData(validUser, remoteId)).thenReturn(false);
+		
+		InOrder ordered = inOrder(mockAuthDao, mockGenericDao);
+		SystemManager manager = new SystemManager(mockAuthDao, mockGenericDao);
+		try {
+			manager.deleteRemoteSystem(userId, remoteId);
+			fail("Exception not thrown when expected! ");
+		} catch (SystemManagerException e) {
+			ordered.verify(mockAuthDao).getAuthData(validUser.getId());
+			ordered.verify(mockGenericDao).deleteSomeData(validUser, remoteId);
 
 		}
 	}
