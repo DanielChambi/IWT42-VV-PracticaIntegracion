@@ -1,15 +1,5 @@
 package com.practica.integracion;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import com.practica.integracion.DAO.*;
-import com.practica.integracion.manager.SystemManager;
-import com.practica.integracion.manager.SystemManagerException;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.mockito.InOrder;
-
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -20,6 +10,31 @@ import java.util.Arrays;
 import java.util.Collection;
 
 import javax.naming.OperationNotSupportedException;
+
+import com.practica.integracion.DAO.AuthDAO;
+import com.practica.integracion.DAO.GenericDAO;
+import com.practica.integracion.DAO.User;
+import com.practica.integracion.manager.SystemManager;
+import com.practica.integracion.manager.SystemManagerException;
+
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.fail;
+import static org.mockito.Mockito.inOrder;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+
+import javax.naming.OperationNotSupportedException;
+
+import org.junit.jupiter.api.*;
+import org.mockito.InOrder;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.*;
 
 @ExtendWith(MockitoExtension.class)
 public class TestInvalidUser {
