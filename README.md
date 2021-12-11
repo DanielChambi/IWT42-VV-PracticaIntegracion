@@ -1,10 +1,8 @@
 # Verificación y Validación del Software 2021
-GRUPO IWx-4x ``<- Modificar``
+GRUPO IWT-42-6
 
 ## Instrucciones para utilizar este proyecto
 
-* Cada alumno debe crearse un usuario de Github
-* Un miembro del grupo debe hacer fork a este proyecto y añadir al repositorio forkeado a sus compañeros de grupo y al profesor como colaboradores.
-* Descargar el proyecto utilizando git clone desde el terminal o desde el IDE.
-* Seguir las indicaciones del enunciado para realizar las pruebas de integración
-* Modificar este fichero añadiendo el número de grupo correspondiente y las instrucciones para ejecutar la práctica
+* Clonar el repositotio a local utilizando la instrucción ```git clone https://github.com/DanielChambi/IWT42-VV-PracticaIntegracion.git```.
+* Abrir la consola en la carpeta raiz del proyecto
+* Ejecutar `mvn test` para ejecutar todas las pruebas del proyecto
